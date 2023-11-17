@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tìm Ước Số</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 50px;
+            }
+
+            input,
+            button,
+            p {
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Tìm Ước Số của Số Nguyên Dương</h1>
+
+        <label for="number">Nhập số nguyên dương:</label>
+        <input type="number" id="number" min="1" required />
+
+        <button onclick="timUocSo()">Tìm Ước Số</button>
+
+        <p id="result"></p>
+
+        <script>
+            function timUocSo() {
+                // Lấy giá trị từ ô input
+                var inputNumber = document.getElementById("number").value;
+
+                var number = parseInt(inputNumber);
+
+                // Kiểm tra xem có phải là số nguyên dương hay không
+                if (isNaN(number) || number <= 0) {
+                    var resultElement = document.getElementById("result");
+                    resultElement.textContent = "Lỗi khi nhập số nguyên dương!"
+                    return;
+                } 
+
+                // Tìm ước số của số nguyên dương
+                var uocSo = [];
+                for (var i = 1; i <= number; i++) {
+                    if (number % i === 0) {
+                        uocSo.push(i);
+                    }
+                }
+
+                // Hiển thị kết quả
+                var resultElement = document.getElementById("result");
+                resultElement.textContent =
+                    "Ước số của " + number + " là: " + uocSo.join(", ");
+            }
+        </script>
+    </body>
+</html>
